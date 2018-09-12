@@ -6,9 +6,9 @@ spring:
     name: storeApp
   data:
     mongodb:
-      host: localhost
+      host: mongo
       port: 27017
-      database: modeldb
+      database: products
       authentication-database: admin
       username: root
       password: hauX123
