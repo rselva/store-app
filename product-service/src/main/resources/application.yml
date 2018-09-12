@@ -4,6 +4,16 @@ server:
 spring:
   application:
     name: storeApp
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: modeldb
+      authentication-database: admin
+      username: root
+      password: hauX123
+
+
 
 # ribbon:
 #   ServerListRefreshInterval: 1000
