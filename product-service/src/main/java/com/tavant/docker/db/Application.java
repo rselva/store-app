@@ -5,14 +5,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.tavant.docker.db.entity.Model;
-import com.tavant.docker.db.repository.ModelRepository;
+import com.tavant.docker.db.entity.Product;
+import com.tavant.docker.db.repository.ProductRepository;
 
 //@SpringBootApplication
 public class Application implements CommandLineRunner {
 
 	@Autowired
-	private ModelRepository repository;
+	private ProductRepository repository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -23,20 +23,19 @@ public class Application implements CommandLineRunner {
 
 		repository.deleteAll();
 
-		repository.save(new Model("v3.0","123", "LogRegModel"));
-		repository.save(new Model("v3.0","124", "LogRegModel"));
+		repository.save(new Product("Car",2000.0));
+		repository.save(new Product("Pen", 20.20));
 
 		System.out.println("-------------------------------");
-		for (Model model : repository.findAll()) {
-			System.out.println(model);
+		for (Product product : repository.findAll()) {
+			System.out.println(product);
 		}
 		System.out.println();
 
-		System.out.println("--------------------------------");
-		System.out.println(repository.findByModelId("123"));
+		 
 
 		System.out.println("--------------------------------");
-		for (Model model : repository.findByVersion("v3.0")) {
+		for (Product model : repository.findAllByName("Car")) {
 			System.out.println(model);
 		}
 
