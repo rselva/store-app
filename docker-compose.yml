@@ -9,11 +9,13 @@ services:
         JAR_FILE: ${JAR_FILE}
     image: rselva/product-service:beta
     environment:
-      DB: db
+      DB: mongo
     ports:
       - 8080:8080
+    depends_on:
+      - mongo
     networks:
-      - snet
+      - devnet
       
   mongo:
     image: mongo
@@ -27,7 +29,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: hauX123
     networks:
-      - snet
+      - devnet
 
   mongo-express:
     image: mongo-express
@@ -40,10 +42,10 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: hauX123
     networks:
-    - snet
+    - devnet
     
 volumes:
   model-data-volume:
   model-config-volume:
 networks:
-  snet:
+  devnet:

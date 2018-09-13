@@ -6,7 +6,7 @@ spring:
     name: storeApp
   data:
     mongodb:
-      host: mongo
+      host: ${DB}
       port: 27017
       database: products
       authentication-database: admin
